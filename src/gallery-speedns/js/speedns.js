@@ -15,13 +15,13 @@ var SpeedNS = {
     *   has fired.
     */
    prefetch: function() {
-       var doc = document;
-       var links = doc.getElementsByTagName("a");
-       var uniqueLinks = {};
-       for (var i = 0, l = links.length; i < l; i++ ) {
-           var uri = links[i].href;
-           var matches = SpeedNS.domainRegex.exec(uri);
-           var domain = matches[0];
+       var doc = document,
+           links = doc.getElementsByTagName("a");
+       var uniqueLinks = {}, i, l;
+       for (i = 0, l = links.length; i < l; i++ ) {
+           var uri = links[i].href,
+               matches = SpeedNS.domainRegex.exec(uri),
+               domain = matches[0];
            
            // hash each domain name.
            uniqueLinks[domain] = false;
@@ -53,7 +53,7 @@ var SpeedNS = {
            i.src = domain + "favicon.ico";
        }
    }
-}
+};
 
 // Alias it on YUI instance.
 Y.speedns = SpeedNS;
