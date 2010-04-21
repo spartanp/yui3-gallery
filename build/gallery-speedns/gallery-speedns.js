@@ -1,3 +1,5 @@
+YUI.add('gallery-speedns', function(Y) {
+
 /**
  * Static class that holds all the utility functions.
  */
@@ -6,7 +8,7 @@ var SpeedNS = {
     /**
      * Regular expression to match a domain name from uri.
      */
-    domainRegex: /((http)|(https)):\/\/[A-Za-z0-9.\-]+\//,
+    domainRegex: /((http)|(https)):\/\/[A-Za-z0-9.-]+\//,
    
    /**
     * Fires DNS lookups for all the links in the current document.
@@ -33,8 +35,7 @@ var SpeedNS = {
             * some libraries like prototype can screw this up.
             */
            if (uniqueLinks.hasOwnProperty(ud)) {
-               SpeedNS.prefetchDNSForDomain(ud,
-                   SpeedNS.processHeadResponses);
+               SpeedNS.prefetchDNSForDomain(ud);
            }
        }
    },
@@ -51,9 +52,13 @@ var SpeedNS = {
        if (document.images) {
            var i = new Image(16, 16);
            i.src = domain + "favicon.ico";
+           alert("prefetched for domain " + domain);
        }
    }
 };
 
 // Alias it on YUI instance.
 Y.speedns = SpeedNS;
+
+
+}, '@VERSION@' ,{requires:['get', 'event-custom']});
