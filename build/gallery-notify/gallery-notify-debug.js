@@ -143,15 +143,14 @@ YUI.add('gallery-notify', function(Y) {
                             duration : 0.25,
                             on : {
                                 end : Y.bind(function () {
+                                    this.remove();
                                     bb.remove();
-                                    parent.remove(index);
                                 },this)
                             }
                         }).run();
                     },this)
                 }
             }).run();
-            this.remove();
         },
         
         /**
@@ -445,4 +444,4 @@ YUI.add('gallery-notify', function(Y) {
 
 
 
-}, 'gallery-2010.04.14-19-47' ,{requires:['base','anim','substitute','widget','widget-parent','widget-child','gallery-timer','event-mouseenter']});
+}, 'gallery-2010.05.05-19-39' ,{requires:['base','anim','substitute','widget','widget-parent','widget-child','gallery-timer','event-mouseenter']});
