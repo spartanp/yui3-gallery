@@ -231,4 +231,10 @@ Y.jsonp = function (url,c) {
     return new Y.JSONPRequest(url,c).send();
 };
 
-YUI.Env.JSONP = {};
+/**
+ * We should initialize this only once, because with multiple use statements in
+ * a page this code will be evaluated multiple times.
+ */
+if ("undefined" === typeof(YUI.Env.JSONP)) {
+    YUI.Env.JSONP = {};
+}
